@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Successful</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+        .card {
+            background: #fff;
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 32px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #28a745;
+            color: #fff;
+            font-size: 38px;
+            line-height: 70px;
+        }
+        h2 { color: #333; margin-bottom: 10px; }
+        p { color: #666; margin-bottom: 24px; }
+        a {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #667eea;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+        a:hover { background: #5a6fd6; }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div class="icon">&#10003;</div>
+    <h2>Signup Successful!</h2>
+    <p>Your account has been created. You can now sign in.</p>
+    <a href="/signin">Go to Sign In</a>
+</div>
+</body>
+</html>

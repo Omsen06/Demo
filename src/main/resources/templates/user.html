@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    ```
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0b0f14;
+        }
+
+        .container {
+            width: 400px;
+            padding: 30px;
+            background: #151b22;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2bfbf0;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #c8d0d5;
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #3a4249;
+            border-radius: 8px;
+            background: #0e1216;
+            color: white;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #2bfbf0;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: #2bfbf0;
+            color: #050708;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #17c9c0;
+        }
+    </style>
+    ```
+
+</head>
+
+<body>
+
+<div class="container">
+
+    ```
+    <h1>Create Profile</h1>
+
+    <form action="/upload"
+          method="post"
+          enctype="multipart/form-data">
+
+        <label>Name</label>
+        <input type="text"
+               name="name"
+               placeholder="Enter your name"
+               required>
+
+        <label>Email</label>
+        <input type="email"
+               name="email"
+               placeholder="Enter your email"
+               required>
+
+        <label>Choose Image</label>
+        <input type="file"
+               name="image"
+               accept="image/*"
+               required>
+
+        <button type="submit">
+            Save Profile
+        </button>
+
+    </form>
+    ```
+
+</div>
+
+</body>
+</html>
