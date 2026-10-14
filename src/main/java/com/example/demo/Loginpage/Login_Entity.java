@@ -16,7 +16,15 @@ public class Login_Entity {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private String role = "USER";
+
+
     public Login_Entity() {
+    }
+
+    public Login_Entity(String role) {
+        this.role = role;
     }
 
     public Login_Entity(Long id, String namel, String email, int age, String state, String password) {
@@ -26,6 +34,7 @@ public class Login_Entity {
         this.age = age;
         this.state = state;
         this.password = password;
+
     }
 
     public Long getId() {
@@ -74,5 +83,13 @@ public class Login_Entity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
