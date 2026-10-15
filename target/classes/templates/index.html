@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>File Upload Download</title>
+</head>
+<body>
+<h2>Upload File</h2>
+
+<form id="uploadForm" action="/upload" method="post">
+    <input type="file" id="file" required>
+    <button type="submit">Upload</button>
+</form>
+
+<p id="message"></p>
+
+<h2>Uploaded Files</h2>
+<ul id="fileList"></ul>
+
+<script>
+    const form = document.getElementById("uploadForm");
+    const message = document.getElementById("message");
+
+    form.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const file = document.getElementById("file").files[0];
+
+        if (!file) {
+            message.textContent = "Select a file first";
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", file);
+
+        try {
+            const response = await fetch("/api/files/upload", {
+                method: "POST",
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error("Upload failed");
+            }
+
+            message.textContent = "File uploaded successfully!";
+            form.reset();
+            await loadFiles();
+
+        } catch (error) {
+            message.textContent = error.message;
+        }
+    });
+
+    async function loadFiles() {
+        const list = document.getElementById("fileList");
+        list.replaceChildren();
+
+        try {
+            const response = await fetch("/api/files");
+
+            if (!response.ok) {
+                throw new Error("Could not load files");
+            }
+
+            const files = await response.json();
+
+            files.forEach(function (file) {
+                const li = document.createElement("li");
+                const link = document.createElement("a");
+
+                link.textContent =
+                    file.originalFilename + " - Download";
+
+                link.href = "/api/files/download/" + file.id;
+
+                li.appendChild(link);
+                list.appendChild(li);
+            });
+
+        } catch (error) {
+            list.textContent = error.message;
+        }
+    }
+
+    loadFiles();
+</script>
+</body>
+</html>
